@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etusername,etpass;
     RadioButton rbremember;
+    JSONObject jsonobject;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
         String pass = etpass.getText().toString();
         Boolean remember = rbremember.isChecked();
 
-        Database db = new Database();
+        jsonobject = JSONfunctions.getJSONfromURL("http://10.2.205.28:5432/bar");
+        System.out.println(jsonobject);
+
+        /*Database db = new Database();
         Connection conn = db.getExtraConnection();
         try {
 
@@ -75,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         }
         catch(Exception e){
             System.out.println("Exception occurred is "+e.getMessage());
-        }
+        }*/
     }
 
     private boolean existe(String[] archivos, String archbusca) {

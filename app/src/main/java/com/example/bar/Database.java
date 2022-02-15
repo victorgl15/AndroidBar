@@ -1,6 +1,7 @@
 package com.example.bar;
 
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -15,7 +16,7 @@ public class Database {
     private final String database = "bar";
     private final int port = 5432;
     private final String user = "bar";
-    private final String pass = "";
+    private final String pass = "bar";
     private String url = "jdbc:postgresql://%s:%d/%s";
     private boolean status;
     private Connection conn;
@@ -37,7 +38,7 @@ public class Database {
             public void run() {
                 try {
                     Class.forName("org.postgresql.Driver");
-                    connection = DriverManager.getConnection(url, user, pass);
+//                    connection = DriverManager.getConnection(url, user, pass);
                     db.setConn(connection);
                     status = true;
                     System.out.println("connected:" + status);
